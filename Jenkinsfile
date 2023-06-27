@@ -44,6 +44,13 @@ pipeline {
            }
        }
 
+        
+        stage('Destroy') {
+            steps {
+                sh "pwd;cd terraform/ ; terraform destroy -input=false tfplan"
+            }
+        }
+
         stage('Apply') {
             steps {
                 sh "pwd;cd terraform/ ; terraform apply -input=false tfplan"
